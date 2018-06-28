@@ -36,8 +36,10 @@ class App extends Component {
       url: '',
       box: {},
       route: 'signin',
+      isSignedIn: false,
     }
   }
+
 
   calculateFaceLocation = (response) => {
     const face = response.outputs[0].data.regions[0].region_info.bounding_box;
@@ -74,8 +76,14 @@ class App extends Component {
   }
 
   routeChange = (route) =>{
-    this.setState({route: route});
+    if(route==='signout')
+     { this.setState({isSignedIn: false});}
+    else if(route==='home')
+     { this.setState({isSignedIn: true});}
+
+    this.setState({route: route});  
   }
+
 
   render() {
     return (
@@ -83,10 +91,10 @@ class App extends Component {
          <Particles 
               params={ParticlesProps}
               className='particles' /> 
-        <Navigation routeChange={this.routeChange} />    
+        <Navigation routeChange={this.routeChange} isSignedIn={this.state.isSignedIn}/>    
         {
           (this.state.route==='register') ? <Register routeChange={this.routeChange} />:
-          (this.state.route==='signin') ? <SignIn routeChange={this.routeChange} />  
+          (this.state.route==='signin' || this.state.route==='signout') ? <SignIn routeChange={this.routeChange} />  
             :<div> 
               <Logo />  
               <Rank />

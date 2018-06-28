@@ -24,9 +24,6 @@ const Register = ({routeChange}) =>{
 					    <div className="">
 					      <input onClick={() => routeChange('signin')} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
 					    </div>
-					    <div className="lh-copy mt3">
-					      <a onClick={() => routeChange('signin')} className="f6 link dim black db">Sign In</a>
-					    </div>
 				  	</form>
 				</main>
 			</div>
