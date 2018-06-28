@@ -33,6 +33,7 @@ class App extends Component {
 
   onClick = () =>{
     console.log("Click");
+    
   }
 
   render() {
