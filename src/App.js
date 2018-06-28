@@ -34,12 +34,18 @@ class App extends Component {
 
   onInput = (event) => {
     this.setState({input: event.target.value})
-    console.log(this.state.input);
+    console.log(event);
+  }
+
+  onKey = (event) => {
+    if(event.key==='Enter')
+      this.onClick();
   }
 
   onClick = () =>{
     console.log("Click");
-    app.models.predict("a403429f2ddf4b49b307e318f00e528b", "https://samples.clarifai.com/face-det.jpg").then(
+    app.models.predict("a403429f2ddf4b49b307e318f00e528b", 
+      "https://samples.clarifai.com/face-det.jpg").then(
     function(response) {
       console.log(response);
     },
@@ -58,7 +64,7 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageForm onClick={this.onClick} onInput = {this.onInput}/>
+        <ImageForm onClick={this.onClick} onKey ={this.onKey} onInput = {this.onInput}/>
      {/*<FaceRecognition />*/}
       </div>
     );
