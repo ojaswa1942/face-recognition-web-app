@@ -19,6 +19,22 @@ const ParticlesProps = {
 }
 
 class App extends Component {
+
+  constructor(){
+    super();
+    this.state={
+      input: '',
+    }
+  }
+
+  onInput = (event) => {
+    console.log(event.target.value);
+  }
+
+  onClick = () =>{
+    console.log("Click");
+  }
+
   render() {
     return (
       <div className="App">
@@ -28,7 +44,7 @@ class App extends Component {
         <Navigation />
         <Logo />
         <Rank />
-        <ImageForm />
+        <ImageForm onClick={this.onClick} onInput = {this.onInput}/>
      {/*<FaceRecognition />*/}
       </div>
     );
