@@ -40,7 +40,6 @@ class App extends Component {
     }
   }
 
-
   calculateFaceLocation = (response) => {
     const face = response.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputimg');
