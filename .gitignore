@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/face-recognition-webapp-api/node_modules
 
 # testing
 /coverage
