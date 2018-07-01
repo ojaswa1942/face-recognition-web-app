@@ -37,7 +37,24 @@ class App extends Component {
       box: {},
       route: 'signin',
       isSignedIn: false,
+      user: {      
+        id: '',
+        name: '',
+        email: '',
+        entries: 0,
+        joined:'',
+      }
     }
+  }
+
+  loadUser = (data) => {
+    this.setState({user: {
+      id: data.id,
+      name: data.name,
+      email: data.email,
+      entries: data.entries,
+      joined: data.joined
+    }})
   }
 
   calculateFaceLocation = (response) => {
@@ -70,6 +87,21 @@ class App extends Component {
     this.setState({url: this.state.input});
     app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
     .then(response => {
+      if(response){
+        fetch('http://localhost:3000/image', {
+          method: 'put',
+          headers: {'Content-type': 'application/json'},
+          body: JSON.stringify({
+            id: this.state.user.id,
+          })
+        })
+        .then(response => response.json())
+        .then(count => {
+          this.setState({user: {
+            entries: count
+          }})
+        })
+      }
       this.markBox(this.calculateFaceLocation(response));})
     .catch(err => console.log("There seems an error", err));
   }
@@ -94,11 +126,11 @@ class App extends Component {
               className='particles' /> 
         <Navigation routeChange={this.routeChange} isSignedIn={isSignedIn}/>    
         {
-          (route==='register') ? <Register routeChange={this.routeChange} />:
-          (route==='signin' || route==='signout') ? <SignIn routeChange={this.routeChange} />  
+          (route==='register') ? <Register routeChange={this.routeChange} loadUser={this.loadUser} />:
+          (route==='signin' || route==='signout') ? <SignIn routeChange={this.routeChange} loadUser={this.loadUser}/>  
             :<div> 
               <Logo />  
-              <Rank />
+              <Rank name={this.state.user.name} entries={this.state.user.entries} />
               <ImageForm 
                 onClick={this.onClick} 
                 onKey ={this.onKey} 

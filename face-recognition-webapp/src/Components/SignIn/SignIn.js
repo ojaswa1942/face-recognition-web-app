@@ -29,8 +29,9 @@ class SignIn extends React.Component{
 		})
 		.then(response => response.json())
 		.then(data => {
-			if(data === "Success")
+			if(data === "Success"){
 				this.props.routeChange('home');
+			}
 			else{
 				const el = document.getElementById('incorrect');
 				el.classList.remove('hidden');
