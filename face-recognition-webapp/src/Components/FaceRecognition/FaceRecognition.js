@@ -5,7 +5,7 @@ const FaceRecognition = ({input, box}) =>{
 	return(
 		<div className='center w-40'>
 			<div className='absolute mt2'>
-				<img id='inputimg' alt='Result will appear here' src={input} height='auto' />
+				<img id='inputimg' alt='Result will appear here' src={input} width='450px' height='auto' />
 				<div className='box' 
 					style={{top:box.topRow, 
 						right: box.rightCol, 
