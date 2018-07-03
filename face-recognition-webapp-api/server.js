@@ -47,25 +47,30 @@ app.get('/', (req,res)=>{
 app.post('/register', (req,res) =>{
 	const {email, name, password} =req.body;	
 	bcrypt.hash(password, null, null, function(err, hash) {
-		trx.insert({
-			hash: hash,
-			email: email
-		})
-		.into('login')
-		.returning('email')
-		.then(loginEmail)
-	});
-	db('users')
-		.returning('*')
-		.insert({
-			email: email, 
-			name: name,
-			joined: new Date() 
-		})
-		.then(user =>{
-			res.json(user[0]);
+		if(err) console.log(err);
+		db.transaction(trx=>{
+			trx.insert({
+				hash: hash,
+				email: email
+			})
+			.into('login')
+			.returning('email')
+			.then(loginEmail => {
+				trx('users')
+				.returning('*')
+				.insert({
+					email: loginEmail[0], 
+					name: name,
+					joined: new Date() 
+				})
+				.then(user =>{
+					res.json(user[0])
+				})
+				.then(trx.commit)
+			}).catch(trx.rollback)
 		})
 		.catch(err => res.status(400).json('Unable to register'))
+	})
 })
 
 app.post('/signin', (req,res)=>{
