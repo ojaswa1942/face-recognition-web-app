@@ -11,17 +11,21 @@ A full-stack working web application using Clarifai Web API for face detection i
 
 3. Run npm install
     This will install all the dependencies.
-    
-4. Go to face-recognition-web-app/face-recognition-webapp-api
+
+4. You must add your own API key in the `src/App.js` file to connect to Clarifai.
+
+You can grab Clarifai API key [here](https://www.clarifai.com/)
+
+5. Go to face-recognition-web-app/face-recognition-webapp-api
     This is the server i.e. the back-end for the application
     
-5. Run npm install
+6. Run npm install
     This will install all the dependencies.
     
-6. Run npm start
+7. Run npm start
     This will run the server, on port 3000
     
-5. Go to face-recognition-web-app/face-recognition-webapp and run npm start
+8. Go to face-recognition-web-app/face-recognition-webapp and run npm start
     Press Y when prompted for using another port
     (Since 3000 is default for create-react-app module and it is occupied)
     It will use the port 3001
@@ -32,9 +36,8 @@ A full-stack working web application using Clarifai Web API for face detection i
 1. Create a database face-recog
 2. Create table users and login, with following structure:
 (Generated using \d tb_name in psql)
-
-                                    Table "public.users"
 <pre>
+                                    Table "public.users"
                                     
 | Column  |            Type             |                     Modifiers                      
 |---------+-----------------------------+----------------------------------------------------
@@ -46,10 +49,8 @@ A full-stack working web application using Clarifai Web API for face detection i
 Indexes:
     "users_pkey" PRIMARY KEY, btree (id)
     "users_email_key" UNIQUE CONSTRAINT, btree (email)
-</pre>    
     
-                                 Table "public.login"
-<pre>                                 
+                                 Table "public.login"                                 
 | Column |          Type          |                     Modifiers                      
 |--------+------------------------+----------------------------------------------------
 | id     | integer                | not null default nextval('login_id_seq'::regclass)
@@ -58,5 +59,19 @@ Indexes:
 Indexes:
     "login_pkey" PRIMARY KEY, btree (id)
     "login_email_key" UNIQUE CONSTRAINT, btree (email)
+
 </pre>
-3. Enter user and password in server.js
+
+3. Enter user and password for the database in server.js
+
+#### Modules used:
+1. react
+2. clarifai
+3. tachyons
+4. bcrypt-nodejs
+5. body-parser
+6. cors
+7. express
+8. knex
+9. pg
+10. nodemon (devDependency)
