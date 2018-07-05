@@ -27,7 +27,23 @@ const ParticlesProps = {
   }
 }
 
+const initialState = {
+  input: '',
+  url: '',
+  box: {},
+  route: 'signin',
+  isSignedIn: false,
+  user: {      
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined:'',
+  }
+}
+
 class App extends Component {
+
 
   constructor(){
     super();
@@ -99,6 +115,7 @@ class App extends Component {
         .then(count => {
           this.setState(Object.assign(this.state.user, {entries: count}))
         })
+        .catch(console.log)
       }
       this.markBox(this.calculateFaceLocation(response));})
     .catch(err => console.log("There seems an error", err));
@@ -106,7 +123,7 @@ class App extends Component {
 
   routeChange = (route) =>{
     if(route==='signout')
-     { this.setState({isSignedIn: false});}
+     { this.setState(initialState);}
     else if(route==='home')
      { this.setState({isSignedIn: true});}
 
