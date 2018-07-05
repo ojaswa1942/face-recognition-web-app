@@ -36,11 +36,11 @@ You can grab Clarifai API key [here](https://www.clarifai.com/)
 1. Create a database face-recog
 2. Create table users and login, with following structure:
 (Generated using \d tb_name in psql)
-<pre>
+
                                     Table "public.users"
                                     
-| Column  |            Type             |                     Modifiers                      
-|---------+-----------------------------+----------------------------------------------------
+| Column  |            Type             |                     Modifiers
+|---------|-----------------------------|-----------------------------------------------
 | id      | integer                     | not null default nextval('users_id_seq'::regclass)
 | name    | character varying(100)      | 
 | email   | text                        | not null
@@ -51,8 +51,8 @@ Indexes:
     "users_email_key" UNIQUE CONSTRAINT, btree (email)
     
                                  Table "public.login"                                 
-| Column |          Type          |                     Modifiers                      
-|--------+------------------------+----------------------------------------------------
+| Column |          Type          |                     Modifiers
+|--------|------------------------|----------------------------------------------------
 | id     | integer                | not null default nextval('login_id_seq'::regclass)
 | hash   | character varying(100) | not null
 | email  | text                   | not null
@@ -60,18 +60,18 @@ Indexes:
     "login_pkey" PRIMARY KEY, btree (id)
     "login_email_key" UNIQUE CONSTRAINT, btree (email)
 
-</pre>
+
 
 3. Enter user and password for the database in server.js
 
 #### Modules used:
-1. react
-2. clarifai
-3. tachyons
-4. bcrypt-nodejs
-5. body-parser
-6. cors
-7. express
-8. knex
-9. pg
-10. nodemon (devDependency)
+1. [react](https://www.npmjs.com/package/react)
+2. [clarifai](https://www.npmjs.com/package/clarifai)
+3. [tachyons](https://www.npmjs.com/package/tachyons)
+4. [bcrypt-nodejs](https://www.npmjs.com/package/bcrypt-nodejs)
+5. [body-parser](https://www.npmjs.com/package/body-parser)
+6. [cors](https://www.npmjs.com/package/cors)
+7. [express](https://www.npmjs.com/package/express)
+8. [knex](https://www.npmjs.com/package/knex)
+9. [pg](https://www.npmjs.com/package/pg)
+10. [nodemon (devDependency)](https://www.npmjs.com/package/nodemon)
