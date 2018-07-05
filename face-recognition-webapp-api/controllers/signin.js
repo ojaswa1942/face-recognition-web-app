@@ -1,9 +1,11 @@
 const handleSignin = (req,res,db,bcrypt)=>{
 	//(db, bcrypt) => (req, res) =>
 	const {email, password} = req.body;
-	// bcrypt.compare(password, hash, function(err, res) {
-   
-	// });
+		if(!email || !password)
+	{
+		return res.status(400).json('Incorrect form submission');
+	}
+
 	db.select('email', 'hash').from('login')
 	.where({email})
 	.then(data => {

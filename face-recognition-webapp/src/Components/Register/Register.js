@@ -1,4 +1,5 @@
 import React from 'react';
+import './Register.css';
 
 class Register extends React.Component {
 
@@ -34,14 +35,14 @@ class Register extends React.Component {
 		})
 		.then(response => response.json())
 		.then(user => {
-			if(user){
+			if(user.id){
 				this.props.loadUser(user);
 				this.props.routeChange('home');
 			}
-			// else{
-			// 	const el = document.getElementById('incorrect');
-			// 	el.classList.remove('hidden');
-			// }
+			else{
+				const el = document.getElementById('incorrect');
+				el.classList.remove('hidden');
+			}
 		})
 	}
 
@@ -77,6 +78,9 @@ class Register extends React.Component {
 						        id="password" 
 						        onChange={this.onPasswordChange}/>
 						      </div>
+  						    <div id='incorrect' className="hidden lh-copy mt3">
+						    	Invalid registration
+						    </div>
 						    </fieldset>
 						    <div className="">
 						      <input onClick={this.onSubmitSignIn} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
