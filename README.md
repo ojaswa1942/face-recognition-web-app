@@ -3,6 +3,8 @@
 v-1.1
 A full-stack working web application using Clarifai Web API for face detection in an image, with website designed using REACTjs, server using NODE with EXPRESS.js and PostgreSQL for database. The server, the database and the front-end are all deployed on Heroku.
 
+[Check out the application here](https://face-recogniti.herokuapp.com/)
+
 ### Steps to start:
 1. Clone this repo
 
