@@ -13,7 +13,7 @@ import Register from './Components/Register/Register';
 const ParticlesProps = {
   particles: {
     number: {
-      value: 80,
+      value: 50,
       density: {
         enable: true,
         value_area: 830
