@@ -1,11 +1,7 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-/face-recognition-webapp-api/.git
-/face-recognition-webapp/.git
-
 # dependencies
-/face-recognition-webapp/node_modules
-/face-recognition-webapp-api/node_modules
+/node_modules
 
 # testing
 /coverage
