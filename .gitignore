@@ -4,6 +4,7 @@
 /face-recognition-webapp/.git
 
 # dependencies
+node_modules
 /face-recognition-webapp/node_modules
 /face-recognition-webapp-api/node_modules
 
