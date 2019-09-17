@@ -156,7 +156,7 @@ class App extends Component {
                 input={url}
                 box={box} />
             </div>
-          }
+        }
       </div>
     );
   }
